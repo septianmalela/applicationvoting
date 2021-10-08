@@ -1,0 +1,20 @@
+<%= form_for post, url: url do |form| %>
+  <div class="card">
+    <div class="card-header card-header-primary">
+      <h4 class="card-title"><%= name_page %></h4>
+      <p class="card-category"><%= name_page %></p>
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <%= form.label :name_1, 'Calon Ketua', style: 'font-size: 25px;' %><br>
+        <%= form.text_field :name_1, class: 'form-control col-md-6', placeholder: 'Calon Ketua', autocomplete: false %>
+      </div>
+      <div class="form-group">
+        <%= form.label :name_2, 'Calon Wakil Ketua', style: 'font-size: 25px;' %><br>
+        <%= form.text_field :name_2, class: 'form-control col-md-6', placeholder: 'Calon Wakil Ketua', autocomplete: false %>
+      </div>
+
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

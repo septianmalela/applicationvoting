@@ -1,0 +1,50 @@
+<%= link_to 'New Calon Ketua', new_admin_post_path, class: 'btn btn-success' %>
+<!-- <div class="row">
+  <div class="col-md-4">
+    <div class="card" style="width: 20rem;">
+      <%#= image_tag 'sidebar-1.jpg', class: 'card-img-top' %>
+      <div class="card-body">
+        <h4 class="card-title">Card title</h4>
+        <p class="card-description">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">List Posts</h4>
+        <p class="card-category">List Calon Ketua</p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>No</th>
+                <th>Calon Ketua</th>
+                <th>Calon Wakil Ketua</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @posts.each_with_index do |post, idx| %>
+                <tr>
+                  <td><%= idx+1 %></td>
+                  <td><%= post.name_1 %></td>
+                  <td><%= post.name_2 %></td>
+                  <td class="text-right">
+                    <%= link_to 'Edit', edit_admin_post_path(post), class: 'btn btn-primary' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>VoteApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application_user', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application_user', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'layouts/shared_user/header' %>
+    <div style="float: right;" class="image-right">
+      <%= image_tag 'kalender_kpu.png' %>
+    </div>
+    <%= yield %>
+    <%= render 'layouts/shared_user/footer' %>
+  </body>
+</html>
+
+<style>
+  body {
+    background-image: url('assets/logo_transparant.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 25%;
+    background-color: #ccdda2;
+  }
+</style>

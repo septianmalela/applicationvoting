@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background: #425b35;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col">
+        <%= image_tag 'logo.png', width: 100, height: 100, class: "d-inline-block align-text-top" %>
+        <span class="position-absolute" style="margin-left: 10px; color: #f4c588; margin-top: 22px;"><b>KPU HIMAKA<br>FIKOM UNPAD</b></span>
+      </div>
+      <div class="col">
+        <%= image_tag 'icon_user_kpu.png', width: 100, height: 85, class: "d-inline-block align-text-top", style: 'float: right; margin-top: 10px;' %>
+      </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="float: right;">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="float: right;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+      </ul>
+      <div>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Beranda</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Berita Acara</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Tutorial</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">Voting</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active text-white" aria-current="page" href="#">About Us</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<style>
+.navbar > .container, .navbar > .container-fluid, .navbar > .container-sm, .navbar > .container-md, .navbar > .container-lg, .navbar > .container-xl, .navbar > .container-xxl {
+    display: block;
+    flex-wrap: inherit;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar {
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+.navbar-brand {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  margin-right: 0px;
+}
+</style>

@@ -1,0 +1,27 @@
+<div class="sidebar" data-color="purple" data-background-color="black" data-image="/assets/sidebar-2.jpg">
+  <div class="logo"><a href="#" class="simple-text logo-normal">
+    KPU HIMAKA
+  </a></div>
+  <div class="sidebar-wrapper">
+    <ul class="nav">
+      <li class="nav-item <%= 'active' if params[:controller].include?('admin/homes') %>">
+        <%= link_to admin_homes_path, class: 'nav-link' do %>
+          <i class="material-icons">dashboard</i>
+          <p>Dashboard</p>
+        <% end %>
+      </li>
+      <li class="nav-item <%= 'active' if params[:controller].include?('admin/posts') %>">
+        <%= link_to admin_posts_path, class: "nav-link" do %>
+          <i class="material-icons">content_paste</i>
+          <p>Post Calon Ketua</p>
+          <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+          <i class="material-icons">person</i>
+          <p>Log out</p>
+        <% end %>
+      </li>
+    </ul>
+  </div>
+</div>
