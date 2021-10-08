@@ -8,7 +8,7 @@
             <i class="material-icons">email</i>
           </span>
         </div>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-md-10' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control col-md-10', placeholder: 'Email Admin' %>
       </div><br>
       <div class="input-group">
         <div class="input-group-prepend">
@@ -16,7 +16,7 @@
             <i class="material-icons">key</i>
           </span>
         </div>
-        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-md-10' %>
+        <%= f.password_field :password, autocomplete: "current-password", class: 'form-control col-md-10', placeholder: 'Password admin' %>
       </div>
       <div class="actions offset-1 p-3">
         <%= f.submit "Log in", class: 'btn btn-primary' %>
