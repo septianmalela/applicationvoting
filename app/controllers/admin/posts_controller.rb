@@ -1,6 +1,6 @@
 class Admin::PostsController < Admin::BaseController
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :desc)
   end
 
   def new
@@ -31,6 +31,6 @@ class Admin::PostsController < Admin::BaseController
   end
 
   def params_post
-    params.require(:post).permit(:name_1, :name_2, :visi, :misi)
+    params.require(:post).permit(:name_1, :name_2, :visi, :misi, :ketua, :wakil)
   end
 end

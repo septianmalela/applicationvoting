@@ -5,16 +5,60 @@
       <p class="card-category"><%= name_page %></p>
     </div>
     <div class="card-body">
-      <div class="form-group">
-        <%= form.label :name_1, 'Calon Ketua', style: 'font-size: 25px;' %><br>
-        <%= form.text_field :name_1, class: 'form-control col-md-6', placeholder: 'Calon Ketua', autocomplete: false %>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :name_1, 'Calon Ketua', style: 'font-size: 25px;' %><br>
+            <%= form.text_field :name_1, class: 'form-control', placeholder: 'Calon Ketua', autocomplete: :off, required: true %>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :name_2, 'Calon Wakil Ketua', style: 'font-size: 25px;' %><br>
+            <%= form.text_field :name_2, class: 'form-control', placeholder: 'Calon Wakil Ketua', autocomplete: :off, required: true %>
+          </div>
+        </div>
       </div>
+
       <div class="form-group">
-        <%= form.label :name_2, 'Calon Wakil Ketua', style: 'font-size: 25px;' %><br>
-        <%= form.text_field :name_2, class: 'form-control col-md-6', placeholder: 'Calon Wakil Ketua', autocomplete: false %>
+        <%= form.label :visi, 'Visi' %>
+        <%= form.text_field :visi, class: 'form-control', required: true, autocomplete: :off %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :misi, 'Misi' %>
+        <%= form.text_area :misi, class: 'form-control', rows: 10, required: true, autocomplete: :off %>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <%= form.label :ketua_data, 'Photo Ketua' %>
+          <%= form.hidden_field :ketua, value: form.object.cached_ketua_data %>
+          <%= form.file_field :ketua, class: 'form-control', onchange: 'preview()', required: true %>
+          <% ketua_avatar = post.ketua_data ? post.ketua_url : '' %>
+          <%= image_tag ketua_avatar, id: 'frame', width: 200, height: 150 %>
+        </div>
+        <div class="col-md-6">
+          <%= form.label :wakil_data, 'Photo Wakil Ketua' %>
+          <%= form.hidden_field :wakil, value: form.object.cached_wakil_data %>
+          <%= form.file_field :wakil, class: 'form-control', onchange: 'preview1()', required: true %>
+          <% wakil_avatar = post.wakil_data ? post.wakil_url : '' %>
+          <%= image_tag wakil_avatar, id: 'frame1', width: 200, height: 150 %>
+        </div>
       </div>
 
       <%= form.submit class: 'btn btn-primary' %>
     </div>
   </div>
 <% end %>
+
+<script>
+  function preview() {
+    frame.src=URL.createObjectURL(event.target.files[0]);
+  }
+
+  function preview1() {
+    frame1.src=URL.createObjectURL(event.target.files[0]);
+  }
+</script>

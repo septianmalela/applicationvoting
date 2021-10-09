@@ -57,3 +57,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 # login logout gem
 gem 'devise'
+
+# Gem Upload Photo
+gem "shrine", "~> 3.0"
