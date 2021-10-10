@@ -16,8 +16,16 @@
 
   <body>
     <%= render 'layouts/shared_user/header' %>
-    <div style="float: right;" class="image-right">
-      <%= image_tag 'kalender_kpu.png' %>
+    <div class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col">
+          </div>
+          <div class="col">
+            <%= image_tag 'kalender_kpu_1.png', style: 'float: right;', class: 'p-3' %>
+          </div>
+        </div>
+      </div>
     </div>
     <%= yield %>
     <%= render 'layouts/shared_user/footer' %>
