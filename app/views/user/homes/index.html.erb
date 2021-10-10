@@ -14,8 +14,3 @@
     <%# end %>
   </div>
 </div> -->
-
-<% if user_signed_in? %>
-  <%= "HAI #{current_user.email}" %>
-  <%= link_to 'Logout', destroy_user_session_path(from_user: true), method: :delete %>
-<% end %>

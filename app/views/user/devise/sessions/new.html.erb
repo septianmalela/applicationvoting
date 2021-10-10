@@ -1,26 +1,70 @@
-<h2>Log in</h2>
+<div class="global-container">
+  <div class="card login-form">
+    <div class="card-body">
+      <h3 class="card-title text-center">Log in</h3>
+      <div class="card-text">
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+          <div class="form-group">
+            <%= f.label :email, for: 'exampleInputEmail1' %><br />
+            <%= f.email_field :email, class: 'form-control form-control-sm', id: 'exampleInputEmail1', autocomplete: :off %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password, for: 'exampleInputPassword1' %>
+            <!-- <a href="#" style="float:right;font-size:12px;">Forgot password?</a> -->
+            <%= f.password_field :password, class: 'form-control form-control-sm', id: 'exampleInputPassword1' %>
+          </div>
+          <%= f.submit 'Log in', class: 'btn btn-primary btn-block' %>
 
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+          <div class="sign-up">
+            Don't have an account? <a href="<%= new_user_registration_path %>">Sign Up</a><br>
+            Back To <%= link_to 'Home', root_path %>
+          </div>
+        <% end %>
+      </div>
     </div>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit "Log in" %>
   </div>
-<% end %>
+</div>
 
-<%= render "user/devise/shared/links" %>
+<style>
+html,body { 
+  height: 100%; 
+}
+
+.global-container{
+  height:100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f5f5f5;
+}
+
+form{
+  padding-top: 10px;
+  font-size: 14px;
+  margin-top: 30px;
+}
+
+.card-title{ font-weight:300; }
+
+.btn{
+  font-size: 14px;
+  margin-top:20px;
+}
+
+
+.login-form{ 
+  width:330px;
+  margin:20px;
+}
+
+.sign-up{
+  text-align:center;
+  padding:20px 0 0;
+}
+
+.alert{
+  margin-bottom:-30px;
+  font-size: 13px;
+  margin-top:20px;
+}
+</style>
