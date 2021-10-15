@@ -14,7 +14,11 @@ Rails.application.routes.draw do
   end
 
   namespace :user do
-    resources :homes
+    resources :homes do
+      member do
+        patch :vote
+      end
+    end
   end
 
   root 'user/homes#index'

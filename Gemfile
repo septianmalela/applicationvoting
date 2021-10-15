@@ -60,3 +60,6 @@ gem 'devise'
 
 # Gem Upload Photo
 gem "shrine", "~> 3.0"
+
+# Gem Vote
+gem 'acts_as_votable'
