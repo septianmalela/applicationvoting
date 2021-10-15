@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">List Users</h4>
+        <p class="card-category">List Users</p>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>No</th>
+                <th>Email</th>
+                <th>Full Name</th>
+                <th>NPM</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @users.each_with_index do |user, idx| %>
+                <tr>
+                  <td><%= idx+1 %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.full_name.try(:titleize) %></td>
+                  <td><%= user.npm %></td>
+                  <td class="text-right">
+                    <%= link_to 'Show', admin_user_path(user), class: 'btn btn-primary' %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

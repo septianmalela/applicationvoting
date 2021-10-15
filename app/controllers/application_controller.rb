@@ -2,7 +2,9 @@ class ApplicationController < ActionController::Base
 
   def after_sign_in_path_for(resource)
     if user_signed_in?
-      user_homes_path    
+      user_homes_path
+    elsif admin_signed_in?
+      admin_homes_path
     end
   end
 

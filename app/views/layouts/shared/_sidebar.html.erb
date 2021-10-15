@@ -16,6 +16,12 @@
           <p>Post Calon Ketua</p>
           <% end %>
       </li>
+      <li class="nav-item <%= 'active' if params[:controller].include?('admin/users') %>">
+        <%= link_to admin_users_path, class: "nav-link" do %>
+          <i class="material-icons">content_paste</i>
+          <p>Data User</p>
+          <% end %>
+      </li>
       <li class="nav-item">
         <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
           <i class="material-icons">person</i>
