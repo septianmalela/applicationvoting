@@ -5,6 +5,42 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+User.destroy_all
+JadwalVote.destroy_all
+Post.destroy_all
+
+start_time_1 = '2021-10-18 09:00'.to_time
+end_time_1 = '2021-10-18 12:00'.to_time
+
+start_time_2 = '2021-10-19 09:00'.to_time
+end_time_2 = '2021-10-19 12:00'.to_time
+
+start_time_3 = '2021-10-20 09:00'.to_time
+end_time_3 = '2021-10-20 12:00'.to_time
+
+start_time_4 = '2021-10-21 09:00'.to_time
+end_time_4 = '2021-10-21 12:00'.to_time
+
+jadwal_votes = [
+  {
+    start_time: start_time_1,
+    end_time: end_time_1
+  },
+  {
+    start_time: start_time_2,
+    end_time: end_time_2
+  },
+  {
+    start_time: start_time_3,
+    end_time: end_time_3
+  },
+  {
+    start_time: start_time_4,
+    end_time: end_time_4
+  }
+]
+
+JadwalVote.create(jadwal_votes)
 
 (1..300).each do |i|
   user_new = User.new(email: "user#{i}@gmail.com", password: 'password', password_confirmation: 'password',
