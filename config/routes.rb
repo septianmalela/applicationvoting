@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :homes
     resources :posts
     resources :users
+    resources :jadwal_votes
     root 'homes#index'
   end
 

@@ -16,6 +16,12 @@
           <p>Post Calon Ketua</p>
           <% end %>
       </li>
+      <li class="nav-item <%= 'active' if params[:controller].include?('admin/jadwal_votes') %>">
+        <%= link_to admin_jadwal_votes_path, class: "nav-link" do %>
+          <i class="material-icons">content_paste</i>
+          <p>Jadwal Vote</p>
+          <% end %>
+      </li>
       <li class="nav-item <%= 'active' if params[:controller].include?('admin/users') %>">
         <%= link_to admin_users_path, class: "nav-link" do %>
           <i class="material-icons">person</i>
