@@ -8,4 +8,9 @@ class User < ApplicationRecord
   belongs_to :jadwal_vote
 
   acts_as_voter
+
+  def validate_jadwal_vote
+    return true if ((jadwal_vote.start_time)..(jadwal_vote.end_time)).cover?(Time.zone.now)
+    false
+  end
 end

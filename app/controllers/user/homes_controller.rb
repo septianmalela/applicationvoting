@@ -7,12 +7,18 @@ class User::HomesController < User::BaseController
     @post = Post.find(params[:id])
     @user = current_user
 
-    if @post.vote_by :voter => @user
-      flash[:notice] = "Successfully Voted"
-      redirect_to root_path
+    if current_user.validate_jadwal_vote
+      if @post.vote_by :voter => @user
+        flash[:notice] = "Successfully Voted"
+        redirect_to root_path
+      else
+        flash[:alert] = "Failed Voted!"
+        redirect_to root_path
+      end
     else
-      flash[:alert] = "Failed Voted!"
+      flash[:alert] = "Jadwal Vote Kamu Tanggal #{date_time(current_user.jadwal_vote.start_time)}"
       redirect_to root_path
     end
+
   end
 end
