@@ -7,8 +7,9 @@ class User::HomesController < User::BaseController
     @post = Post.find(params[:id])
     @user = current_user
 
-    if current_user.validate_jadwal_vote
+    if @user.validate_jadwal_vote
       if @post.vote_by :voter => @user
+        @post.update(total_vote: @post.votes_for.size)
         flash[:notice] = "Successfully Voted"
         redirect_to root_path
       else
