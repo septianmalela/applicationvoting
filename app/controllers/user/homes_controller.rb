@@ -1,6 +1,6 @@
 class User::HomesController < User::BaseController
   def index
-    @posts = Post.all
+    @posts = Post.order(created_at: :DESC)
   end
 
   def vote

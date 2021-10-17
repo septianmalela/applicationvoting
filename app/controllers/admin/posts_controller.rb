@@ -1,4 +1,5 @@
 class Admin::PostsController < Admin::BaseController
+
   def index
     @posts = Post.order(created_at: :desc)
   end
@@ -13,6 +14,9 @@ class Admin::PostsController < Admin::BaseController
 
   def create
     @post = Post.new(params_post)
+    @post.ketua_derivatives! if @post.ketua_changed?
+    @post.wakil_derivatives! if @post.wakil_changed?
+
     if @post.save
       redirect_to admin_posts_path
     else
@@ -29,6 +33,8 @@ class Admin::PostsController < Admin::BaseController
       render :edit
     end
   end
+
+  private
 
   def params_post
     params.require(:post).permit(:name_1, :name_2, :visi, :misi, :ketua, :wakil)

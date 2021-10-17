@@ -8,10 +8,14 @@
 
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application_user', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application_user', 'data-turbolinks-track': 'reload' %>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
   </head>
 
   <body>
@@ -22,7 +26,7 @@
           <div class="col">
           </div>
           <div class="col">
-            <%= image_tag 'kalender_kpu_1.png', style: 'float: right;', class: 'p-3' %>
+            <%= image_tag 'kalender_kpu_1.png', style: 'float: right;', class: 'p-3 datepicker', id: 'datetimepicker2' %>
           </div>
         </div>
       </div>
@@ -31,6 +35,15 @@
     <%= render 'layouts/shared_user/footer' %>
   </body>
 </html>
+
+<script>
+  $(function () {
+    $('#datetimepicker2').datepicker({
+      autoclose: true, 
+      todayHighlight: true
+    });
+  });
+</script>
 
 <style>
   body {
@@ -41,4 +54,10 @@
     background-size: 25%;
     background-color: #ccdda2;
   }
+
+  .datepicker td, .datepicker th {
+    width: 2.5rem;
+    height: 2.5rem;
+    font-size: 0.85rem;
+  }}
 </style>
