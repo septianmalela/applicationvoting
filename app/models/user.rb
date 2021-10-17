@@ -10,7 +10,10 @@ class User < ApplicationRecord
   acts_as_voter
 
   def validate_jadwal_vote
-    return true if ((jadwal_vote.start_time)..(jadwal_vote.end_time)).cover?(Time.zone.now)
-    false
+    if ((jadwal_vote.start_time)..(jadwal_vote.end_time)).cover?(Time.zone.now)
+      true
+    else
+      false
+    end
   end
 end
