@@ -29,6 +29,13 @@
             <%= image_tag 'kalender_kpu_1.png', style: 'float: right;', class: 'p-3 datepicker', id: 'datetimepicker2' %>
           </div>
         </div>
+        <div class="container">
+          <% flash.each do |type, msg| %>
+            <div class="alert alert-info">
+              <%= msg %>
+            </div>
+          <% end %>
+        </div>
       </div>
     </div>
     <%= yield %>
