@@ -13,10 +13,10 @@
           </div>
         </div>
         <div class="card-body">
-          <p class="card-text">
-            visi : <%= post.visi %><br>
-            Misi : <%= post.misi %>
-          </p>
+          <p class="card-text"><h4>Visi</h4></p>
+          <p><%= post.visi %></p>
+          <p class="card-text"><h4>Misi</h4></p>
+          <p><%= post.misi %></p>
         </div>
         <div class="card-footer">
           <% if user_signed_in? %>
