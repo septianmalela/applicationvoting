@@ -1,0 +1,119 @@
+<div class="row">
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <p class="card-category">Jumlah User</p>
+        <h3 class="card-title"><%= User.count %>
+          <small></small>
+        </h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-warning">warning</i>
+          <a href="#pablo" class="warning-link">Get More Space...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-success card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">content_paste</i>
+        </div>
+        <p class="card-category">Jumlah Post</p>
+        <h3 class="card-title"><%= Post.count %>
+          <small></small>
+        </h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-warning">warning</i>
+          <a href="#pablo" class="warning-link">Get More Space...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <p class="card-category">Jumlah Vote User</p>
+        <h3 class="card-title"><%#= User.get_vote_user %>
+          <small></small>
+        </h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-warning">warning</i>
+          <a href="#pablo" class="warning-link">Show User</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-warning card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <p class="card-category">Jumlah User Tidak Vote</p>
+        <h3 class="card-title"><%#= User.get_unvote_user %>
+          <small></small>
+        </h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-warning">warning</i>
+          <a href="#pablo" class="warning-link">Get More Space...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-success card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <p class="card-category">Jumlah Vote Post</p>
+        <h3 class="card-title"><%#= User.get_unvote_user %>
+          <small></small>
+        </h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-warning">warning</i>
+          <a href="#pablo" class="warning-link">Get More Space...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xl-3 col-lg-6 col-md-6 col-sm-6">
+    <div class="card card-stats">
+      <div class="card-header card-header-success card-header-icon">
+        <div class="card-icon">
+          <i class="material-icons">person</i>
+        </div>
+        <p class="card-category">Jumlah Post Tidak Vote</p>
+        <h3 class="card-title"><%#= User.get_unvote_user %>
+          <small></small>
+        </h3>
+      </div>
+      <div class="card-footer">
+        <div class="stats">
+          <i class="material-icons text-warning">warning</i>
+          <a href="#pablo" class="warning-link">Get More Space...</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

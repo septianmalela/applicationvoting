@@ -9,6 +9,22 @@ class User < ApplicationRecord
 
   acts_as_voter
 
+  def self.get_vote_user
+    jumlah_vote = []
+    self.all.each do |user|
+      jumlah_vote.push(1) if user.votes.present?
+    end
+    jumlah_vote.count
+  end
+
+  def self.get_unvote_user
+    jumlah_unvote = []
+    self.all.each do |user|
+      jumlah_unvote.push(1) if user.votes.blank?
+    end
+    jumlah_unvote.count
+  end
+
   def validate_jadwal_vote
     if ((jadwal_vote.start_time)..(jadwal_vote.end_time)).cover?(Time.zone.now)
       true
