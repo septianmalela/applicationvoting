@@ -45,6 +45,9 @@ JadwalVote.create(jadwal_votes)
 (1..300).each do |i|
   user_new = User.new(email: "user#{i}@gmail.com", password: 'password', password_confirmation: 'password',
     full_name: "user_#{i}", npm: "#{i}")
+  user_new.email_for_test = true
+  user_new
+
   if i <= 100
     user_new.jadwal_vote = JadwalVote.first
   elsif i <= 200
@@ -53,4 +56,5 @@ JadwalVote.create(jadwal_votes)
     user_new.jadwal_vote = JadwalVote.third
   end
   user_new.save
+  user_new.confirm
 end

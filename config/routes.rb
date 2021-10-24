@@ -7,9 +7,22 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    resources :homes
+    resources :homes do
+      member do
+        get :show_vote_post
+      end
+      collection do
+        get :show_user_vote
+        get :show_user_unvote
+      end
+    end
     resources :posts
-    resources :users
+    resources :users do
+      member do
+        patch :active_user
+        patch :nonactive_user
+      end
+    end
     resources :jadwal_votes
     root 'homes#index'
   end

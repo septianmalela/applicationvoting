@@ -13,7 +13,7 @@
       <div class="card-footer">
         <div class="stats">
           <i class="material-icons text-warning">warning</i>
-          <a href="#" class="warning-link">Get More Space...</a>
+          <a href="<%= admin_users_path %>" class="warning-link">Show Users</a>
         </div>
       </div>
     </div>
@@ -32,7 +32,7 @@
       <div class="card-footer">
         <div class="stats">
           <i class="material-icons text-warning">warning</i>
-          <a href="#" class="warning-link">Get More Space...</a>
+          <a href="<%= admin_posts_path %>" class="warning-link">Show Posts</a>
         </div>
       </div>
     </div>
@@ -47,14 +47,14 @@
           <i class="material-icons">person</i>
         </div>
         <p class="card-category">Jumlah Vote User</p>
-        <h3 class="card-title"><%= User.get_vote_user %>
+        <h3 class="card-title"><%= User.get_vote_user.count %>
           <small></small>
         </h3>
       </div>
       <div class="card-footer">
         <div class="stats">
           <i class="material-icons text-warning">warning</i>
-          <a href="#" class="warning-link">Show User</a>
+          <a href="<%= show_user_vote_admin_homes_path %>" class="warning-link">Show User Vote</a>
         </div>
       </div>
     </div>
@@ -66,14 +66,14 @@
           <i class="material-icons">person</i>
         </div>
         <p class="card-category">Jumlah User Tidak Vote</p>
-        <h3 class="card-title"><%= User.get_unvote_user %>
+        <h3 class="card-title"><%= User.get_unvote_user.count %>
           <small></small>
         </h3>
       </div>
       <div class="card-footer">
         <div class="stats">
           <i class="material-icons text-warning">warning</i>
-          <a href="#" class="warning-link">Get More Space...</a>
+          <a href="<%= show_user_unvote_admin_homes_path %>" class="warning-link">Show User Unvote</a>
         </div>
       </div>
     </div>
@@ -89,14 +89,14 @@
             <i class="material-icons">content_paste</i>
           </div>
           <p class="card-category">Jumlah Post <%= idx+1 %></p>
-          <h3 class="card-title"><%= post.total_vote %>
+          <h3 class="card-title"><%= post.votes_for.size %>
             <small></small>
           </h3>
         </div>
         <div class="card-footer">
           <div class="stats">
             <i class="material-icons text-warning">warning</i>
-            <a href="#" class="warning-link">Show Post</a>
+            <a href="<%= show_vote_post_admin_home_path(post) %>" class="warning-link">Show Post</a>
           </div>
         </div>
       </div>
