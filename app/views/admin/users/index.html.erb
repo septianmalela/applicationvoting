@@ -30,7 +30,7 @@
                   <td><%= user.email %></td>
                   <td><%= user.full_name.try(:titleize) %></td>
                   <td><%= user.npm %></td>
-                  <td><%= "#{date_time(user.jadwal_vote.start_time)} - #{get_time(user.jadwal_vote.end_time)}" %></td>
+                  <td><%= "#{date_time(user.try(:jadwal_vote).try(:start_time))} - #{get_time(user.try(:jadwal_vote).try(:end_time))}" %></td>
                   <td class="text-right">
                     <%= link_to 'Show', admin_user_path(user), class: 'btn btn-primary' %>
                     <% if user.active_user %>

@@ -32,6 +32,8 @@ class User < ApplicationRecord
   end
 
   def validate_jadwal_vote
+    return nil if jadwal_vote.blank?
+
     if ((jadwal_vote.start_time)..(jadwal_vote.end_time)).cover?(Time.zone.now)
       true
     else
