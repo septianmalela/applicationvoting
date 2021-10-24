@@ -13,7 +13,7 @@ class User < ApplicationRecord
 
   belongs_to :jadwal_vote, optional: true
 
-  validate :check_email, if: :email_test?
+  validate :check_email, unless: :email_test?
 
   def self.get_vote_user
     jumlah_vote = []
@@ -45,6 +45,6 @@ class User < ApplicationRecord
   end
 
   def email_test?
-    email_for_test.eql?(true)
+    self.email_for_test
   end
 end
