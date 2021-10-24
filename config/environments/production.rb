@@ -97,19 +97,22 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.perform_deliveries = true
+  config.action_mailer.default_url_options = { :host => 'floating-escarpment-35060.herokuapp.com' }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'https://floating-escarpment-35060.herokuapp.com'}
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.default :charset => "utf-8"
 
   config.action_mailer.smtp_settings = {
-    user_name:     'maulanas430@gmail.com',
-    password:      'megumi1st',
-    domain:        'https://floating-escarpment-35060.herokuapp.com',
-    address:       'smtp.gmail.com',
-    port:          '587',
-    authentication: :plain,
-    enable_starttls_auto: true
+    :enable_starttls_auto => true,
+    :address => 'smtp.gmail.com',
+    :port => 587,
+    :authentication => :plain,
+    :domain => 'floating-escarpment-35060.herokuapp.com',
+    :user_name => 'maulanas430@gmail.com',
+    :password => 'megumi1st'
   }
+
 
   # Inserts middleware to perform automatic connection switching.
   # The `database_selector` hash is used to pass options to the DatabaseSelector
