@@ -22,6 +22,12 @@
           <p>Jadwal Vote</p>
           <% end %>
       </li>
+      <li class="nav-item <%= 'active' if params[:controller].include?('admin/list_users') %>">
+        <%= link_to admin_list_users_path, class: "nav-link" do %>
+          <i class="material-icons">person</i>
+          <p>List User</p>
+          <% end %>
+      </li>
       <li class="nav-item <%= 'active' if params[:controller].include?('admin/users') %>">
         <%= link_to admin_users_path, class: "nav-link" do %>
           <i class="material-icons">person</i>

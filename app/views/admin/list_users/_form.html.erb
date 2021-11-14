@@ -1,0 +1,31 @@
+<%= form_for list_user, url: url do |form| %>
+  <div class="card">
+    <div class="card-header card-header-primary">
+      <h4 class="card-title"><%= name_page %></h4>
+      <p class="card-category"><%= name_page %></p>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class='col-sm-12'>
+          <div class="form-group">
+            <label>Email</label><br>
+            <%= form.text_field :email, class: 'form-control', type: 'email' %>
+          </div>
+        </div>
+        <div class='col-sm-12'>
+          <div class="form-group">
+            <label>Name</label><br>
+            <%= form.text_field :name, class: 'form-control' %>
+          </div>
+        </div>
+        <div class='col-sm-12'>
+          <div class="form-group">
+            <label>Angkatan</label><br>
+            <%= form.number_field :angkatan, class: 'form-control' %>
+          </div>
+        </div>
+      </div>
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

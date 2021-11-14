@@ -1,0 +1,40 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
+        <h4 class="card-title">List User</h4>
+        <p class="card-category">List User</p>
+      </div>
+      <div class="card-body">
+        <%= link_to "New List User", new_admin_list_user_path, class: 'btn btn-success' %>
+        <div class="table-responsive">
+          <table class="table">
+            <thead class=" text-primary">
+              <tr>
+                <th>No</th>
+                <th>Email</th>
+                <th>Name</th>
+                <th>Angkatan</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @list_users.each_with_index do |user, idx| %>
+                <tr>
+                  <td><%= idx+1 %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.name %></td>
+                  <td><%= user.angkatan %></td>
+                  <td class="text-right">
+                    <%= link_to 'Edit', edit_admin_list_user_path(user), class: 'btn btn-primary' %>
+                    <%= link_to 'Delete', admin_list_user_path(user), class: 'btn btn-danger', data: { confirm: "Are you sure?" },method: :delete %>
+                  </td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

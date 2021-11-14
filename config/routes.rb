@@ -24,6 +24,7 @@ Rails.application.routes.draw do
       end
     end
     resources :jadwal_votes
+    resources :list_users
     root 'homes#index'
   end
 
