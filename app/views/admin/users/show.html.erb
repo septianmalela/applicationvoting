@@ -26,6 +26,12 @@
         </div>
         <div class="row">
           <div class="form-group">
+            <h4>Angkatan :</h4>
+            <h5><%= @user.angkatan %></h5>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
             <h4>Jadwal Vote :</h4>
             <h5><%= "#{date_time(@user.jadwal_vote.start_time)} - #{get_time(@user.jadwal_vote.end_time)}" %></h5>
           </div>

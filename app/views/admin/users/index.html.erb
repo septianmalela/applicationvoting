@@ -19,6 +19,7 @@
                 <th>Email</th>
                 <th>Full Name</th>
                 <th>NPM</th>
+                <th>Angkatan</th>
                 <th>Jadwal Vote</th>
                 <th></th>
               </tr>
@@ -30,6 +31,7 @@
                   <td><%= user.email %></td>
                   <td><%= user.full_name.try(:titleize) %></td>
                   <td><%= user.npm %></td>
+                  <td><%= user.angkatan %></td>
                   <td><%= "#{date_time(user.try(:jadwal_vote).try(:start_time))} - #{get_time(user.try(:jadwal_vote).try(:end_time))}" %></td>
                   <td class="text-right">
                     <%= link_to 'Show', admin_user_path(user), class: 'btn btn-primary' %>
