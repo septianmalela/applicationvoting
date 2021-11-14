@@ -5,56 +5,57 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-User.destroy_all
+# User.destroy_all
+# Post.destroy_all
 JadwalVote.destroy_all
-Post.destroy_all
 
-start_time_1 = '2021-10-18 09:00'.to_time
-end_time_1 = '2021-10-18 12:00'.to_time
+start_time_1 = Date.today
+end_time_1 = Date.today + 1.days
 
-start_time_2 = '2021-10-19 09:00'.to_time
-end_time_2 = '2021-10-19 12:00'.to_time
+start_time_2 = Date.today + 1.days
+end_time_2 = Date.today + 2.days
 
-start_time_3 = '2021-10-20 09:00'.to_time
-end_time_3 = '2021-10-20 12:00'.to_time
+start_time_3 = Date.today + 2.days
+end_time_3 = Date.today + 3.days
 
-start_time_4 = '2021-10-21 09:00'.to_time
-end_time_4 = '2021-10-21 12:00'.to_time
+start_time_4 = Date.today + 3.days
+end_time_4 = Date.today + 4.days
 
 jadwal_votes = [
   {
-    start_time: start_time_1,
-    end_time: end_time_1
+    start_time: start_time_1.to_time,
+    end_time: end_time_1.to_time
   },
   {
-    start_time: start_time_2,
-    end_time: end_time_2
+    start_time: start_time_2.to_time,
+    end_time: end_time_2.to_time
   },
   {
-    start_time: start_time_3,
-    end_time: end_time_3
+    start_time: start_time_3.to_time,
+    end_time: end_time_3.to_time
   },
   {
-    start_time: start_time_4,
-    end_time: end_time_4
+    start_time: start_time_4.to_time,
+    end_time: end_time_4.to_time
   }
 ]
 
 JadwalVote.create(jadwal_votes)
 
-(1..300).each do |i|
+(1..500).each do |i|
   user_new = User.new(email: "user#{i}@gmail.com", password: 'password', password_confirmation: 'password',
     full_name: "user_#{i}", npm: "#{i}")
   user_new.email_for_test = true
   user_new
 
-  if i <= 100
+  if i <= 200
     user_new.jadwal_vote = JadwalVote.first
-  elsif i <= 200
+  elsif i <= 400
     user_new.jadwal_vote = JadwalVote.second
   else
     user_new.jadwal_vote = JadwalVote.third
   end
+  user_new.skip_confirmation!
   user_new.save
   user_new.confirm
 end

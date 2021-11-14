@@ -66,3 +66,6 @@ gem 'acts_as_votable'
 
 # Gem resize image shrine
 gem "image_processing", "~> 1.8"
+
+# Gem import excel
+gem "roo", "~> 2.8.0"
