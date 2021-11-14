@@ -30,11 +30,7 @@
                   <td><%= "#{date_time(user.try(:jadwal_vote).try(:start_time))} - #{get_time(user.try(:jadwal_vote).try(:end_time))}" %></td>
                   <td class="text-right">
                     <%= link_to 'Show', admin_user_path(user), class: 'btn btn-primary' %>
-                    <% if user.active_user %>
-                      <%= link_to 'NoActivated', nonactive_user_admin_user_path(user), class: 'btn btn-danger', :data => {:confirm => 'Are you sure?'}, method: :patch %>
-                    <% else %>
-                      <%= link_to 'Activated', active_user_admin_user_path(user), class: 'btn btn-success', :data => {:confirm => 'Are you sure?'}, method: :patch %>
-                    <% end %>
+                    <%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary' %>
                   </td>
                 </tr>
               <% end %>

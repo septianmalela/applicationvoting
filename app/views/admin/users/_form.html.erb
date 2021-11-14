@@ -1,0 +1,42 @@
+<%= form_for user, url: url do |form| %>
+  <div class="card">
+    <div class="card-header card-header-primary">
+      <h4 class="card-title"><%= name_page %></h4>
+      <p class="card-category"><%= name_page %></p>
+    </div>
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :email, 'Email', style: 'font-size: 25px;' %><br>
+            <%= form.text_field :email, class: 'form-control', placeholder: 'Email', autocomplete: :off %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :full_name, 'Full Name', style: 'font-size: 25px;' %><br>
+            <%= form.text_field :full_name, class: 'form-control', placeholder: 'Full Name', autocomplete: :off %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :angkatan, 'Angkatan', style: 'font-size: 25px;' %><br>
+            <%= form.number_field :angkatan, class: 'form-control', placeholder: 'Angkatan', autocomplete: :off %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <%= form.label :jadwal_vote_id, 'Jadwal Vote', style: 'font-size: 25px;' %><br>
+            <%= form.select :jadwal_vote_id, JadwalVote.all.map { |jadwal_vote| [date_time(jadwal_vote.start_time), jadwal_vote.id] }, {selected: form.object.jadwal_vote_id.present? ? form.object.jadwal_vote_id : nil}, { class: "form-control" } %>
+          </div>
+        </div>
+      </div>
+      <%= form.submit class: 'btn btn-primary' %>
+  </div>
+<% end %>
