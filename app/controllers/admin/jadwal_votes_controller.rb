@@ -17,6 +17,7 @@ class Admin::JadwalVotesController < Admin::BaseController
 
     if @jadwal_vote.save
       redirect_to admin_jadwal_votes_path
+      flash[:notice] = 'Jadwal vote succesfully created.'
     else
       render :new
     end
@@ -27,8 +28,22 @@ class Admin::JadwalVotesController < Admin::BaseController
 
     if @jadwal_vote = @jadwal_vote.update(jadwal_vote_params)
       redirect_to admin_jadwal_votes_path
+      flash[:notice] = 'Jadwal vote succesfully updated.'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @jadwal_vote = JadwalVote.find(params[:id])
+
+    begin
+      @jadwal_vote.destroy
+      redirect_to admin_jadwal_votes_path
+      flash[:notice] = 'Jadwal vote succesfully destroyed.'
+    rescue ActiveRecord::InvalidForeignKey => e
+      redirect_to admin_jadwal_votes_path
+      flash[:alert] = 'Jadwal vote used by user'
     end
   end
 

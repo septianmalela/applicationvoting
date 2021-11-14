@@ -19,6 +19,7 @@ class Admin::PostsController < Admin::BaseController
 
     if @post.save
       redirect_to admin_posts_path
+      flash[:notice] = 'Post succesfully created.'
     else
       render :new
     end
@@ -29,8 +30,21 @@ class Admin::PostsController < Admin::BaseController
 
     if @post = @post.update(params_post)
       redirect_to admin_posts_path
+      flash[:notice] = 'Post succesfully updated.'
     else
       render :edit
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+
+    if @post.destroy
+      redirect_to admin_posts_path
+      flash[:notice] = 'Post succesfully destroyed.'
+    else
+      redirect_to admin_posts_path
+      flash[:alert] = 'Failed destroy this post'
     end
   end
 

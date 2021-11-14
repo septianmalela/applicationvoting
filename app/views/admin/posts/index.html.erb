@@ -38,6 +38,7 @@
                   <td><%= post.name_2 %></td>
                   <td class="text-right">
                     <%= link_to 'Edit', edit_admin_post_path(post), class: 'btn btn-primary' %>
+                    <%= link_to 'Delete', admin_post_path(post), class: 'btn btn-danger', data: { confirm: "Are you sure?" },method: :delete %>
                   </td>
                 </tr>
               <% end %>

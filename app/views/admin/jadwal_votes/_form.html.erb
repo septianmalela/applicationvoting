@@ -3,19 +3,20 @@
     <div class="card-header card-header-primary">
       <h4 class="card-title"><%= name_page %></h4>
       <p class="card-category"><%= name_page %></p>
+      <a class="card-category" onclick="window.location.reload()">Click disini jika tanggal tidak muncul di form</a>
     </div>
     <div class="card-body">
       <div class="row">
         <div class='col-sm-12'>
           <div class="form-group">
-            <label for="datetimepicker1">Start Time</label><br>
-            <%= form.text_field :start_time, class: 'form-control datetimepicker1', id: 'datetimepicker1' %>
+            <label>Start Time</label><br>
+            <%= form.text_field :start_time, class: 'form-control', id: 'datetimepicker' %>
           </div>
         </div>
         <div class='col-sm-12'>
           <div class="form-group">
-            <label for="datetimepicker2">End Time</label><br>
-            <%= form.text_field :end_time, class: 'form-control datetimepicker2', id: 'datetimepicker2' %>
+            <label>End Time</label><br>
+            <%= form.text_field :end_time, class: 'form-control', id: 'datetimepicker1' %>
           </div>
         </div>
       </div>
@@ -25,25 +26,8 @@
 <% end %>
 
 <script>
-  $('#datetimepicker1').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm'
-  });
+  jQuery.datetimepicker.setLocale('de');
 
-  $('#datetimepicker2').datetimepicker({
-    format: 'DD/MM/YYYY HH:mm'
-  });
+  $('#datetimepicker').datetimepicker();
+  $('#datetimepicker1').datetimepicker();
 </script>
-
-<style>
-  .datetimepicker1 td, .datetimepicker1 th {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 0.85rem;
-  }}
-
-  .datetimepicker2 td, .datetimepicker2 th {
-    width: 2.5rem;
-    height: 2.5rem;
-    font-size: 0.85rem;
-  }}
-</style>

@@ -35,14 +35,14 @@
         <div class="col-md-6">
           <%= form.label :ketua_data, 'Photo Ketua' %>
           <%= form.hidden_field :ketua, value: form.object.cached_ketua_data %>
-          <%= form.file_field :ketua, class: 'form-control', onchange: 'preview()', required: true %>
+          <%= form.file_field :ketua, class: 'form-control', onchange: 'preview()' %>
           <% ketua_avatar = post.ketua_data ? post.ketua_url : '' %>
           <%= image_tag ketua_avatar, id: 'frame', width: 300, height: 350 %>
         </div>
         <div class="col-md-6">
           <%= form.label :wakil_data, 'Photo Wakil Ketua' %>
           <%= form.hidden_field :wakil, value: form.object.cached_wakil_data %>
-          <%= form.file_field :wakil, class: 'form-control', onchange: 'preview1()', required: true %>
+          <%= form.file_field :wakil, class: 'form-control', onchange: 'preview1()' %>
           <% wakil_avatar = post.wakil_data ? post.wakil_url : '' %>
           <%= image_tag wakil_avatar, id: 'frame1', width: 300, height: 350 %>
         </div>

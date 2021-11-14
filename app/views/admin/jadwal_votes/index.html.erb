@@ -6,6 +6,7 @@
         <p class="card-category">List Jadwal Votes</p>
       </div>
       <div class="card-body">
+        <%= link_to "New Jadwal Vote", new_admin_jadwal_vote_path, class: 'btn btn-success' %>
         <div class="table-responsive">
           <table class="table">
             <thead class=" text-primary">
@@ -24,6 +25,7 @@
                   <td><%= date_time(vote.end_time) %></td>
                   <td class="text-right">
                     <%= link_to 'Edit', edit_admin_jadwal_vote_path(vote), class: 'btn btn-primary' %>
+                    <%= link_to 'Delete', admin_jadwal_vote_path(vote), class: 'btn btn-danger', data: { confirm: "Are you sure?" },method: :delete %>
                   </td>
                 </tr>
               <% end %>
