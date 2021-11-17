@@ -2,7 +2,7 @@ require 'roo'
 namespace :import do
   desc "Import data"
   task data: :environment do
-    (17..20).each do |idx|
+    (16..21).each do |idx|
       puts "Importing Data Angkatan #{idx}"
       data = Roo::Spreadsheet.open("lib/angkatan_#{idx}.xlsx") # open spreadsheet
       headers = data.row(1) # get header row
@@ -19,8 +19,9 @@ namespace :import do
         end
         
         user = ListUser.new(user_data)
+        user.skip = true
         puts "Saving User with email #{user.email}"
-        user.save!
+        user.save
       end
     end
   end
