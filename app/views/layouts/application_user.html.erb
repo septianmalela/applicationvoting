@@ -22,13 +22,13 @@
     <%= render 'layouts/shared_user/header' %>
     <div class="navbar navbar-expand-lg">
       <div class="container-fluid">
-        <div class="row">
+        <!-- <div class="row">
           <div class="col">
           </div>
           <div class="col">
-            <%= image_tag 'kalender_kpu_1.png', style: 'float: right;', class: 'p-3 datepicker', id: 'datetimepicker2' %>
+            <%#= image_tag 'kalender_kpu_1.png', style: 'float: right;', class: 'p-3 datepicker', id: 'datetimepicker2' %>
           </div>
-        </div>
+        </div> -->
         <div class="container">
           <% flash.each do |type, msg| %>
             <div class="alert <%= type.eql?("notice") ? 'alert-success' : 'alert-danger' %>">
@@ -39,7 +39,7 @@
       </div>
     </div>
     <%= yield %>
-    <%= render 'layouts/shared_user/footer' %>
+    <%#= render 'layouts/shared_user/footer' %>
   </body>
 </html>
 
@@ -54,7 +54,7 @@
 
 <style>
   body {
-    background-image: url('assets/logo_transparant.png');
+    background-image: url('<%= asset_path 'logo_transparant.png' %>');
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-position: center;

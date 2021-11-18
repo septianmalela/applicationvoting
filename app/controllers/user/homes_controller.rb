@@ -23,4 +23,10 @@ class User::HomesController < User::BaseController
       redirect_to root_path
     end
   end
+
+  def tutorial;end
+
+  def beranda;end
+
+  def about_us;end
 end

@@ -30,6 +30,11 @@ Rails.application.routes.draw do
 
   namespace :user do
     resources :homes do
+      collection do
+        get :tutorial
+        get :beranda
+        get :about_us
+      end
       member do
         patch :vote
       end
