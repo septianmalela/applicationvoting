@@ -17,6 +17,12 @@ class User::Devise::ConfirmationsController < Devise::ConfirmationsController
   #   super
   # end
 
+  def show
+    super do |resource|
+      sign_in(resource)
+    end
+  end
+
   # protected
 
   # The path used after resending confirmation instructions.

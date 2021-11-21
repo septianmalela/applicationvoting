@@ -3,7 +3,8 @@ Rails.application.routes.draw do
   devise_for :admins, controllers: { sessions: 'admin/devise/sessions' }
   devise_for :users, controllers: {
     sessions: 'user/devise/sessions',
-    registrations: 'user/devise/registrations'
+    registrations: 'user/devise/registrations',
+    confirmations: 'user/devise/confirmations'
   }
 
   namespace :admin do
