@@ -2,7 +2,7 @@ class ListUser < ApplicationRecord
   attr_accessor :skip
 
   validates :email, uniqueness: true
-  # validate :check_email, unless: :skip_validation
+  validate :check_email, unless: :skip_validation
 
   def check_email
     check_email = email.split('@')
