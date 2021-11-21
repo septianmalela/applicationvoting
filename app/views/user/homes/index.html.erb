@@ -1,24 +1,29 @@
 <center class="pt-3"><h1 style="color: #425b35">VOTING</h1></center>
-<hr style="height:5px;border-width:3;color:#000000;background-color:#000000;width:50%">
+<hr style="height:5px;border-width:3;color:#000000;background-color:#000000;width:30%">
 <div class="container pt-3">
   <div class="card-deck">
     <% @posts.each do |post| %>
-      <div class="card" style="background-color: #425b35">
+      <div class="card" style="background-color: #425b35; width: 18rem;">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-12">
             <p class="text-center text-white"><%= post.name_1 %></p>
-            <%= image_tag post.ketua(:small).url, class: 'img-fluid img-thumbnail rounded mx-auto d-block' %>
-          </div>
-          <div class="col-md-6">
-            <p class="text-center text-white"><%= post.name_1 %></p>
-            <%= image_tag post.wakil(:small).url, class: 'img-fluid img-thumbnail rounded mx-auto d-block' %>
+            <%= image_tag post.ketua(:small).url, class: 'img-thumbnail rounded mx-auto d-block card-img-top' %>
           </div>
         </div>
         <div class="card-body text-white">
           <center><p class="card-text"><h4>Visi</h4></p></center>
           <center><p><%= post.visi %></p></center>
           <center><p class="card-text"><h4>Misi</h4></p></center>
-          <center><p><%= post.misi %></p></p></center>
+          <% misi = post.misi.split /[\r\n]+/ %>
+          <center>
+            <table border="0">
+              <tbody>
+                <% misi.each_with_index do |value, num| %>
+                  <tr><td><%= num+1 %>.</td><td></td><td><%= value.split('.').last %></td></tr>
+                <% end %>
+              </tbody>
+            </table>
+          </center>
         </div>
         <div class="card-footer">
           <% if user_signed_in? %>

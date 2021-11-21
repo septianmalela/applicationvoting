@@ -18,6 +18,9 @@ Rails.application.routes.draw do
     end
     resources :posts
     resources :users do
+      collection do
+        post :update_jadwal_vote
+      end
       member do
         patch :active_user
         patch :nonactive_user

@@ -2,7 +2,8 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_angkatan, only: :update
 
   def index
-    @users = User.order(active_user: :DESC)
+    @users = User.where(angkatan: nil)
+    @users = User.where(angkatan: params[:angkatan].to_i) if params[:angkatan].present?
   end
 
   def show
@@ -42,6 +43,17 @@ class Admin::UsersController < Admin::BaseController
       flash[:alert] = @user.errors.full_messages.to_sentence
       render :edit
     end
+  end
+
+  def update_jadwal_vote
+    if params[:user_ids].blank? || params[:jadwal_vote].blank?
+      flash[:alert] = 'User or Jadwal Vote Is Blank!'
+      return redirect_to admin_users_path
+    end
+    hasil = User.user_update_jadwal_vote(params[:user_ids], params[:jadwal_vote])
+    redirect_to admin_users_path(angkatan: params[:angkatan])
+    flash[:notice] = "#{hasil.select { |hasil| hasil == true }.count} Update Jadwal Vote Succesfully Updated,
+                      #{hasil.select { |hasil| hasil == false }.count} Update Jadwal Vote Failed Updated."
   end
 
   private

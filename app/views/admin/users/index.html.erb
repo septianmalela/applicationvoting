@@ -1,43 +1,113 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="card">
-      <div class="card-header card-header-primary">
-        <h4 class="card-title">List Users</h4>
-        <p class="card-category">List Users</p>
-      </div>
-      <div class="card-body">
-        <div class="table-responsive">
-          <table class="table">
-            <thead class=" text-primary">
-              <tr>
-                <th>No</th>
-                <th>Email</th>
-                <th>Full Name</th>
-                <th>NPM</th>
-                <th>Angkatan</th>
-                <th>Jadwal Vote</th>
-                <th></th>
-              </tr>
-            </thead>
-            <tbody>
-              <% @users.each_with_index do |user, idx| %>
+<%= form_for User.new, url: update_jadwal_vote_admin_users_path do |form| %>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header card-header-primary">
+          <h4 class="card-title">List Users</h4>
+          <p class="card-category">List Users</p>
+        </div>
+        <div class="card-body">
+          <div class="row">
+            <% User.all.map(&:angkatan).uniq.compact.sort.each do |angkatan| %>
+              <%= link_to "Angkatan #{angkatan}", admin_users_path(angkatan: angkatan), class: 'btn btn-primary' %>
+            <% end if User.present? %>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" id="modal_update">
+              Update Jadwal Vote
+            </button>
+          </div>
+          <div class="table-responsive">
+            <table class="table">
+              <thead class="text-primary">
                 <tr>
-                  <td><%= idx+1 %></td>
-                  <td><%= user.email %></td>
-                  <td><%= user.full_name.try(:titleize) %></td>
-                  <td><%= user.npm %></td>
-                  <td><%= user.angkatan %></td>
-                  <td><%= "#{date_time(user.try(:jadwal_vote).try(:start_time))} - #{get_time(user.try(:jadwal_vote).try(:end_time))}" %></td>
-                  <td class="text-right">
-                    <%= link_to 'Show', admin_user_path(user), class: 'btn btn-primary' %>
-                    <%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary' %>
-                  </td>
+                  <th>No</th>
+                  <th>Email</th>
+                  <th>Full Name</th>
+                  <th>NPM</th>
+                  <th>Angkatan</th>
+                  <th>Jadwal Vote</th>
+                  <th class="text-left">
+                    <div class="row">
+                      <div class="form-check">
+                        <label class="form-check-label" style="padding-top: 5px;">
+                          Check All
+                          <input class="form-check-input" type="checkbox" id="checkAll">
+                          <span class="form-check-sign" style="padding-top: 18px;">
+                            <span class="check"></span>
+                          </span>
+                        </label>
+                      </div>
+                    </div>
+                  </th>
                 </tr>
-              <% end %>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <% @users.each_with_index do |user, idx| %>
+                  <tr>
+                    <td><%= idx+1 %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.full_name.try(:titleize) %></td>
+                    <td><%= user.npm %></td>
+                    <td><%= user.angkatan %></td>
+                    <td><%= "#{date_time(user.try(:jadwal_vote).try(:start_time))} - #{get_time(user.try(:jadwal_vote).try(:end_time))}" %></td>
+                    <td class="text-right">
+                      <div class="row">
+                        <div class="form-check">
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" value="<%= user.id %>" id="checkbox<%= user.id %>" name="user_ids[]">
+                            <span class="form-check-sign">
+                              <span class="check"></span>
+                            </span>
+                          </label>
+                        <%= link_to 'Show', admin_user_path(user), class: 'btn btn-primary' %>
+                        <%= link_to 'Edit', edit_admin_user_path(user), class: 'btn btn-primary' %>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content dark-edition">
+        <div class="modal-header">
+          <h5 class="modal-title text-white" id="exampleModalLabel">Jadwal Vote</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <% JadwalVote.order(start_time: :DESC).each do |jadwal_vote| %>
+            <div class="form-check form-check-radio form-check-inline">
+              <label class="form-check-label">
+                <input class="form-check-input" type="radio" name="jadwal_vote" id="inlineRadio1" value="<%= jadwal_vote.id %>">
+                <%= "#{date_time(jadwal_vote.start_time)} - #{date_time(jadwal_vote.end_time)}" %>
+                <span class="circle">
+                  <span class="check"></span>
+                </span>
+              </label>
+            </div>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <%= form.submit "Update Jadwal Vote", class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
+
+<script>
+  $("#checkAll").click(function(){
+    $('input:checkbox').not(this).prop('checked', this.checked);
+  });
+</script>

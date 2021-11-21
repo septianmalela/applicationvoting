@@ -6,8 +6,8 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
-         # :confirmable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
 
   attr_accessor :email_for_test
 
@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   belongs_to :jadwal_vote, optional: true
 
-  validate :check_user
-  validate :check_email, unless: :email_test?
+  # validate :check_user
+  # validate :check_email, unless: :email_test?
 
   # instance method
 
@@ -56,6 +56,16 @@ class User < ApplicationRecord
     elsif angkatan.eql?(20)
       jadwal_vote_angkatan(JadwalVote.first)
     end
+  end
+
+  def self.user_update_jadwal_vote(user_ids, jadwal_vote_id)
+    jadwal_vote = JadwalVote.find(jadwal_vote_id)
+    hasil = []
+    User.where(id: user_ids).each do |user|
+      updated = user.update(jadwal_vote: jadwal_vote)
+      hasil.push(updated)
+    end
+    hasil
   end
 
   def validate_jadwal_vote

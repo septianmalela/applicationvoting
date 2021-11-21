@@ -10,6 +10,7 @@ class User::HomesController < User::BaseController
     if @user.validate_jadwal_vote
       if @post.vote_by :voter => @user
         @post.update(total_vote: @post.votes_for.size)
+        VoteMailer.with(user: @user, post: @post).vote_email.deliver_now
         flash[:notice] = "Successfully Voted"
         redirect_to root_path
       else
