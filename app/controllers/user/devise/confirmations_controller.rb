@@ -34,4 +34,10 @@ class User::Devise::ConfirmationsController < Devise::ConfirmationsController
   # def after_confirmation_path_for(resource_name, resource)
   #   super(resource_name, resource)
   # end
+
+  private
+
+  def after_confirmation_path_for(resource_name, resource)
+    root_path
+  end
 end
