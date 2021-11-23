@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   belongs_to :jadwal_vote, optional: true
 
-  # validate :check_user
-  # validate :check_email, unless: :email_test?
+  validate :check_user
+  validate :check_email, unless: :email_test?
 
   # instance method
 
@@ -48,13 +48,13 @@ class User < ApplicationRecord
     return nil if jadwal_vote.present?
 
     if angkatan.eql?(17)
-      jadwal_vote_angkatan(JadwalVote.fourth)
+      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
     elsif angkatan.eql?(18)
-      jadwal_vote_angkatan(JadwalVote.third)
+      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
     elsif angkatan.eql?(19)
-      jadwal_vote_angkatan(JadwalVote.second)
+      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
     elsif angkatan.eql?(20)
-      jadwal_vote_angkatan(JadwalVote.first)
+      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
     end
   end
 

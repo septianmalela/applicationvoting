@@ -50,6 +50,6 @@ class Admin::JadwalVotesController < Admin::BaseController
   private
 
   def jadwal_vote_params
-    params.require(:jadwal_vote).permit(:start_time, :end_time)
+    params.require(:jadwal_vote).permit(:start_time, :end_time, :angkatan)
   end
 end
