@@ -15,8 +15,8 @@ class User < ApplicationRecord
 
   belongs_to :jadwal_vote, optional: true
 
-  validate :check_user
-  validate :check_email, unless: :email_test?
+  # validate :check_user
+  # validate :check_email, unless: :email_test?
 
   # instance method
 
