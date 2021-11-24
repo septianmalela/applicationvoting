@@ -22,7 +22,8 @@
 
           <div class="sign-up">
             Don't have an account? <a href="<%= new_user_registration_path %>">Sign Up</a><br>
-            Back To <%= link_to 'Home', root_path %>
+            Back To <%= link_to 'Home', root_path %><br>
+            No Received Confirmation Email? <%= link_to 'Click Here', new_user_confirmation_path %>
           </div>
         <% end %>
       </div>
