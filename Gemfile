@@ -69,3 +69,9 @@ gem "image_processing", "~> 1.8"
 
 # Gem import excel
 gem "roo", "~> 2.8.0"
+
+# Gem capistrano
+gem 'capistrano', '~> 3.11'
+gem 'capistrano-rails', '~> 1.4'
+gem 'capistrano-passenger', '~> 0.2.0'
+gem 'capistrano-rbenv', '~> 2.1', '>= 2.1.4'

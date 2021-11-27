@@ -2,8 +2,11 @@ class Admin::UsersController < Admin::BaseController
   before_action :set_angkatan, only: :update
 
   def index
-    @users = User.where(angkatan: nil)
-    @users = User.where(angkatan: params[:angkatan].to_i) if params[:angkatan].present?
+    if params[:angkatan].present?
+      @users = User.includes(:jadwal_vote).where(angkatan: params[:angkatan].to_i)
+    else
+      @users = User.includes(:jadwal_vote).where(angkatan: nil)
+    end
   end
 
   def show

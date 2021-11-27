@@ -56,6 +56,5 @@ JadwalVote.create(jadwal_votes)
     user_new.jadwal_vote = JadwalVote.third
   end
   user_new.skip_confirmation!
-  user_new.save
-  user_new.confirm
+  user_new.save(validate: false)
 end

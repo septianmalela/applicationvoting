@@ -47,15 +47,7 @@ class User < ApplicationRecord
   def set_jadwal_vote
     return nil if jadwal_vote.present?
 
-    if angkatan.eql?(17)
-      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
-    elsif angkatan.eql?(18)
-      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
-    elsif angkatan.eql?(19)
-      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
-    elsif angkatan.eql?(20)
-      jadwal_vote_angkatan(JadwalVote.find_by(angkatan: angkatan))
-    end
+    self.update(jadwal_vote: JadwalVote.find_by(angkatan: self.angkatan))
   end
 
   def self.user_update_jadwal_vote(user_ids, jadwal_vote_id)
