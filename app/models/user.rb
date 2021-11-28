@@ -26,7 +26,7 @@ class User < ApplicationRecord
 
   def self.get_vote_user
     jumlah_vote = []
-    self.all.each do |user|
+    User.includes(:votes).each do |user|
       jumlah_vote.push(user.id) if user.votes.present?
     end
     jumlah_vote
@@ -34,7 +34,7 @@ class User < ApplicationRecord
 
   def self.get_unvote_user
     jumlah_unvote = []
-    self.all.each do |user|
+    User.includes(:votes).each do |user|
       jumlah_unvote.push(user.id) if user.votes.blank?
     end
     jumlah_unvote

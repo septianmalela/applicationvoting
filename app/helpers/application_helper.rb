@@ -11,6 +11,12 @@ module ApplicationHelper
     datetime.strftime("%H:%M")
   end
 
+  def get_date(datetime)
+    return if datetime.blank?
+
+    datetime.strftime("%d-%m-%Y")
+  end
+
   def flash_message
     content_tag :div, class: "flash-messages" do
       flash.map do |key, value|
