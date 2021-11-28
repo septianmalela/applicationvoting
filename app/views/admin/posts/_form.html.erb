@@ -6,17 +6,10 @@
     </div>
     <div class="card-body">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <div class="form-group">
-            <%= form.label :name_1, 'Calon Ketua', style: 'font-size: 25px;' %><br>
+            <%= form.label :name_1, 'Calon Ketua & Wakil Ketua', style: 'font-size: 25px;' %><br>
             <%= form.text_field :name_1, class: 'form-control', placeholder: 'Calon Ketua', autocomplete: :off, required: true %>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="form-group">
-            <%= form.label :name_2, 'Calon Wakil Ketua', style: 'font-size: 25px;' %><br>
-            <%= form.text_field :name_2, class: 'form-control', placeholder: 'Calon Wakil Ketua', autocomplete: :off, required: true %>
           </div>
         </div>
       </div>
