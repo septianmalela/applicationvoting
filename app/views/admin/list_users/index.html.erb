@@ -2,6 +2,35 @@
   <div class="col-md-12">
     <div class="card">
       <div class="card-header card-header-primary">
+        <h4 class="card-title">Advanced Search</h4>
+        <p class="card-category">Advances Search</p>
+      </div>
+      <div class="card-body">
+        <%= search_form_for @q, url: admin_list_users_path do |f| %>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.label :email_cont, 'Search By Email' %>
+            <%= f.search_field :email_cont, class: 'form-control' %>
+          </div>
+
+          <div class="col-md-6">
+            <%= f.label :name_cont, 'Search By Name' %>
+            <%= f.search_field :name_cont, class: 'form-control' %>
+          </div>
+        </div>
+
+          <%= f.submit 'Search', class: 'btn btn-primary' %>
+          <%= link_to "Reset", admin_list_users_path, class: 'btn btn-white' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="card">
+      <div class="card-header card-header-primary">
         <h4 class="card-title">List User</h4>
         <p class="card-category">List User</p>
       </div>

@@ -1,7 +1,8 @@
 class Admin::ListUsersController < Admin::BaseController
 
   def index
-    @list_users = ListUser.order(angkatan: :desc).order(created_at: :desc)
+    @q = ListUser.ransack(params[:q])
+    @list_users = @q.result.order(angkatan: :desc).order(created_at: :desc)
   end
 
   def new
