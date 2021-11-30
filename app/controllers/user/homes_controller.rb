@@ -1,4 +1,6 @@
 class User::HomesController < User::BaseController
+  before_action :cache_video, only: :tutorial
+
   def index
     @posts = Post.order(created_at: :DESC)
   end
@@ -30,4 +32,14 @@ class User::HomesController < User::BaseController
   def beranda;end
 
   def about_us;end
+
+  private
+
+  def cache_video
+    return if Rails.cache.fetch("video_tutorial").present?
+
+    Rails.cache.fetch("video_tutorial", expires_in: 7.days) do
+      "https://drive.google.com/file/d/1mlfanF_dSdF7cv-kw9fYXQ0Krax9vv6x/preview"
+    end
+  end
 end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   skip_before_action :verify_authenticity_token
   before_action :configure_permitted_parameters, if: :devise_controller?
+  before_action :set_redirect
 
   def after_sign_in_path_for(resource)
     if user_signed_in?
@@ -19,6 +20,13 @@ class ApplicationController < ActionController::Base
   end
 
   protected
+
+  def set_redirect
+    if params[:controller].eql?("devise/registrations") && params[:action].eql?('new')
+      flash[:alert] = "Can't Access This Page!!!"
+      redirect_to new_admin_session_path
+    end
+  end
 
   def configure_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:email, :password, :password_confirmation, :full_name,

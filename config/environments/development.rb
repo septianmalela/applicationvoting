@@ -25,9 +25,9 @@ Rails.application.configure do
       'Cache-Control' => "public, max-age=#{2.days.to_i}"
     }
   else
-    config.action_controller.perform_caching = false
+    config.action_controller.perform_caching = true
 
-    config.cache_store = :null_store
+    config.cache_store = :memory_store, { size: 64.megabytes }
   end
   config.action_mailer.perform_deliveries = true
   config.action_mailer.delivery_method = :smtp
