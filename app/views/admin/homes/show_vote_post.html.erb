@@ -12,7 +12,7 @@
             <h4>Total Vote Tanggal <%= get_date(@jadwal_vote.start_time) %> : <%= @user_votes2 %></h4>
           <% end %>
           <% @jadwal_votes.each do |jadwal| %>
-            <%= link_to "Jadwal Vote #{get_date(jadwal.start_time)}", show_vote_post_admin_home_path(@post, jadwal_vote_id: jadwal.id), class: 'btn btn-primary' %>
+            <%= link_to "Jadwal Vote #{get_date(jadwal.start_time)} / Angkatan #{jadwal.angkatan}", show_vote_post_admin_home_path(@post, jadwal_vote_id: jadwal.id), class: 'btn btn-primary' %>
           <% end %>
           <%= link_to "Show All Vote", show_vote_post_admin_home_path(@post), class: 'btn btn-primary' %>
           <table class="table">
@@ -21,6 +21,7 @@
                 <th>No</th>
                 <th>Email</th>
                 <th>Full Name</th>
+                <th>Angkatan</th>
                 <th>Jadwal Vote</th>
                 <th></th>
               </tr>
@@ -31,6 +32,7 @@
                   <td><%= idx+1 %></td>
                   <td><%= user.voter.email %></td>
                   <td><%= user.voter.full_name %></td>
+                  <td><%= user.voter.angkatan %></td>
                   <td><%= "#{date_time(user.voter.jadwal_vote.try(:start_time))} - #{get_time(user.voter.jadwal_vote.try(:end_time))}" %></td>
                 </tr>
               <% end %>
