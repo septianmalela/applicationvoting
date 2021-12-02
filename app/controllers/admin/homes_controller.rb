@@ -1,6 +1,7 @@
 class Admin::HomesController < Admin::BaseController
   before_action :get_jadwal_vote, only: %i[show_vote_post show_user_vote show_user_unvote]
   before_action :jadwal_vote, only: %i[show_vote_post show_user_vote show_user_unvote]
+  before_action :count_jadwal_vote, only: :index
 
   def index
     @posts = Post.all
@@ -46,5 +47,14 @@ class Admin::HomesController < Admin::BaseController
 
   def jadwal_vote
     @jadwal_vote = JadwalVote.find(params[:jadwal_vote_id]) if params[:jadwal_vote_id].present?
+  end
+
+  def count_jadwal_vote
+    @tanggal_2      = "2021-12-02"
+    @tanggal_3      = "2021-12-03"
+    @tanggal_4      = "2021-12-04"
+    @vote_tanggal_2 = Post.get_total_vote(@tanggal_2)
+    @vote_tanggal_3 = Post.get_total_vote(@tanggal_3)
+    @vote_tanggal_4 = Post.get_total_vote(@tanggal_4)
   end
 end
